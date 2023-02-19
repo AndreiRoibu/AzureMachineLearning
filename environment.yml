@@ -2,7 +2,7 @@
 
 name: simpleEnvironment
 dependencies:
-- python=3.6.2
+- python=3.8
 - scikit-learn
 - pandas
 - pip
