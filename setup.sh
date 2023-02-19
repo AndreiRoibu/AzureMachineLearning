@@ -4,7 +4,7 @@
 
 # Create workspace
 echo "Creating a Azure Resource Group:"
-az group create --name "andreiroibu-azureml" --location "southuk"
+az group create --name "andreiroibu-azureml" --location "uksouth"
 
 echo "Creating an Azure Machine Learning workspace:"
 az ml workspace create --name "andreiroibu-mlworkspace" -g "andreiroibu-azureml"
