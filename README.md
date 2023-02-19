@@ -2,7 +2,7 @@
 Repository containing code of a Microsoft Azure machine learning project I completed to reinforce my learning.
 
 ## Installation
-To install the above code, one needs to follow these steps:
+To install the above code, one needs to follow these steps to create an Azure workspace and compute instance.
 
 1. Open an [Azure portal](https://portal.azure.com/?azure-portal=true) and sign in.
 2. Open the Cloud Shell
@@ -16,3 +16,18 @@ git clone https://github.com/AndreiRoibu/AzureMachineLearning.git
 cd AzureMachineLearning
 ./setup.sh
 ```
+
+## Code Initialisation
+To interact with the code and reproduce the work presented above, clone this repo by following these steps:
+
+1. Open [Azure ML Studio](https://ml.azure.com/)
+2. Start the *Compute Instance* if not already running by going to *Compute > Compute Instance*
+3. Open *Applications*
+4. Then, open *Terminal*
+5. Enter the following code
+
+```bash
+git clone https://github.com/AndreiRoibu/AzureMachineLearning.git
+```
+
+6. Then, all codes should be available under *Notebooks*. You might need to refresh view!
