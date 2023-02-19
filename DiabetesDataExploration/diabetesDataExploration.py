@@ -1,17 +1,17 @@
-from azure.core import Run
-import numpy as np
+from azureml.core import Run
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+
+import os
 
 # Get the experimental context
 run = Run.get_context()
 
-df = pd.read_csv('datasets/diabetes.csv')
+df = pd.read_csv('diabetes.csv')
 
 # Log the number of rows
-rowCount = len(df)
-run.log('no_observations', rowCount)
+rowCount = (len(df))
+run.log('observations', rowCount)
+print('Analyzing {} rows of data'.format(rowCount))
 
 # Log the summary statistics for numeric columns
 medicalColumns = ['Pregnancies', 'PlasmaGlucose', 'DiastolicBloodPressure',
@@ -29,23 +29,27 @@ pregnancies = df.Pregnancies.unique()
 run.log_list('Pregnancy Categories', pregnancies)
 
 # Count and Log Diabetic Lables
-labels = df['Diabetic'].value_counts()
-for key, value in labels:
-    run.log('Label:' + str(key), value)
-
-# Plot and log the distribution of diabetic vs non-diabetic
 diabeticCounts = df['Diabetic'].value_counts()
-fig = plt.figure(figsize=(6,6))
-ax = fig.gca()    
-diabeticCounts.plot.bar(ax = ax) 
-ax.set_title('Patients with Diabetes') 
-ax.set_xlabel('Diagnosis') 
-ax.set_ylabel('Patients')
-plt.show()
-run.log_image(name='label distribution', plot=fig)
+print(diabeticCounts)
+for k, v in diabeticCounts.items():
+    run.log('Label:' + str(k), v)
+
+# IF RUNNING THIS AS A STANDALONE IN-LINE SCRIPT, UNCOMMENT THIS TO GENERATE VISUALISATIONS
+
+# # Plot and log the distribution of diabetic vs non-diabetic
+# import matplotlib.pyplot as plt
+# diabeticCounts = df['Diabetic'].value_counts()
+# fig = plt.figure(figsize=(6,6))
+# ax = fig.gca()    
+# diabeticCounts.plot.bar(ax = ax) 
+# ax.set_title('Patients with Diabetes') 
+# ax.set_xlabel('Diagnosis') 
+# ax.set_ylabel('Patients')
+# plt.show()
+# run.log_image(name='label distribution', plot=fig)
 
 # Save a sample of the data
-df.sample(100).to_csv('diabetesSample.csv', index=False, header=True)
-run.upload_file(name='outputs/diabetesSample.csv', path_or_stream='./diabetesSample.csv')
+os.makedirs('outputs', exist_ok=True)
+df.sample(100).to_csv("outputs/diabetesSample.csv", index=False, header=True)
 
 run.complete()
