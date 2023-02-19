@@ -6,7 +6,6 @@ dependencies:
 - scikit-learn
 - pandas
 - pip
-- numpy
 - pip:
   - azureml-defaults
   - azureml-mlflow
