@@ -21,13 +21,14 @@ cd AzureMachineLearning
 To interact with the code and reproduce the work presented above, clone this repo by following these steps:
 
 1. Open [Azure ML Studio](https://ml.azure.com/)
-2. Start the *Compute Instance* if not already running by going to *Compute > Compute Instance*
-3. Open *Applications*
-4. Then, open *Terminal*
-5. Enter the following code
+2. Enter your workspace, in this case: *Workspaces > andreiroibu-mlworkspace*
+3. Start the *Compute Instance* if not already running by going to *Compute > Compute Instance*
+4. Open *Applications*
+5. Then, open *Terminal*
+6. Enter the following code
 
 ```bash
 git clone https://github.com/AndreiRoibu/AzureMachineLearning.git
 ```
 
-6. Then, all codes should be available under *Notebooks*. You might need to refresh view!
+7. Then, all codes should be available under *Notebooks*. You might need to refresh view!
